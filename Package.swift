@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "PokerNowKit",
     platforms: [
-        .macOS("10.10")
+        .macOS("10.12")
     ],
     products: [
         .library(
@@ -13,7 +13,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .upToNextMinor(from: "1.3.1"))
-    ], 
+    ],
     targets: [
         .target(
             name: "PokerNowKit",
