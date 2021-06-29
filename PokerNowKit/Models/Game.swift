@@ -121,7 +121,7 @@ public class Game: NSObject {
             if debugHandAction {
                 print("#\(self.currentHand?.id ?? 0) - hole cards: \(self.currentHand?.hole?.map({$0.rawValue}) ?? [])")
             }
-        } else if msg?.lowercased().hasPrefix("flop") ?? false {
+        } else if msg?.lowercased().starts(with: "flop") ?? false {
             let line = msg?.slice(from: "[", to: "]")
             self.currentHand?.flop = line?.replacingOccurrences(of: "flop: ", with: "", options: .caseInsensitive).components(separatedBy: ", ").map({
                 return EmojiCard(rawValue: $0)?.emojiFlip ?? .error
@@ -131,7 +131,7 @@ public class Game: NSObject {
                 print("#\(self.currentHand?.id ?? 0) - flop: \(self.currentHand?.flop?.map({$0.rawValue}) ?? [])")
             }
 
-        } else if msg?.lowercased().hasPrefix("turn") ?? false {
+        } else if msg?.lowercased().starts(with: "turn") ?? false {
             let line = msg?.slice(from: "[", to: "]")
             self.currentHand?.turn = EmojiCard(rawValue: line?.replacingOccurrences(of: "turn: ", with: "", options: .caseInsensitive) ?? "error")?.emojiFlip ?? .error
 
@@ -139,7 +139,7 @@ public class Game: NSObject {
                 print("#\(self.currentHand?.id ?? 0) - turn: \(self.currentHand?.turn?.rawValue ?? "?")")
             }
 
-        } else if msg?.lowercased().hasPrefix("river") ?? false {
+        } else if msg?.lowercased().starts(with: "river") ?? false {
             let line = msg?.slice(from: "[", to: "]")
             self.currentHand?.river = EmojiCard(rawValue: line?.replacingOccurrences(of: "river: ", with: "", options: .caseInsensitive) ?? "error")?.emojiFlip ?? .error
 
